@@ -1,15 +1,20 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        CuentaBancaria cuenta = new CuentaBancaria();
+        cuenta.setSaldo(12000.78);
+        System.out.println("Saldo: " + cuenta.getSaldo());
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.println("-----------------");
+        cuenta.Depositar(900.0);
+
+        System.out.println("-----------------");
+
+        try{
+            cuenta.Retirar(8.12);
+            cuenta.Retirar(1500000000000.10);
+        } catch(SaldoInsuficienteException e){ //Se ejecuta el "get message" del exeption --> catch
+            System.out.println(e.getMessage());
+            System.out.println("Saldo insuficiente. No se puede realizar la operación.(Mensaje de la consola adicional.)");
         }
     }
 }
